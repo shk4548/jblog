@@ -22,23 +22,23 @@
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li class="selected">기본설정</li>
-					<li><a href="">카테고리</a></li>
-					<li><a href="">글작성</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id }/admin/basic">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id }/admin/category">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath}/${authUser.id }/admin/post">글작성</a></li>
 				</ul>
-				<form action="" method="post">
+				<form action="${pageContext.request.contextPath }/${authUser.id }/blog/update" enctype="multipart/form-data" method="post">
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>
-			      			<td><input type="text" size="40" name="title"></td>
+			      			<td><input type="text" size="40" name="title" value="${blogVo.title }"></td>
 			      		</tr>
 			      		<tr>
 			      			<td class="t">로고이미지</td>
-			      			<td><img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"></td>      			
+			      			<td><img id="logo" src="${pageContext.request.contextPath }${blogVo.logo}"></td>      			
 			      		</tr>      		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>
-			      			<td><input type="file" name="logo-file"></td>      			
+			      			<td><input type="file" name="inputFile"></td>      			
 			      		</tr>           		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>
