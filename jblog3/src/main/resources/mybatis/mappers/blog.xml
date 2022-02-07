@@ -4,7 +4,7 @@
 <mapper namespace="blog">
 	<select id="viewBlog" parameterType = "string" resultType="blogvo">
 			<![CDATA[
-			select title, logo , user_id from blog where user_id = #{_parameter}
+			select title, logo , user_id from blog where user_id =  #{user_id}
 			]]>
 	</select>
 
@@ -24,7 +24,7 @@
 	</update>
 	<insert id="defaultBlog" parameterType = "string">
 			<![CDATA[
-			insert into blog values('의 블로그' , '/images/202214103442454.png' ,#{_parameter}) 
+			insert into blog values('블로그 대문을 작성해 주세요.' , '/images/202214103442454.png' ,#{_parameter}) 
 			]]>	
 	</insert>
 

@@ -4,7 +4,7 @@
 <mapper namespace="category">
 	<select id="viewCategory" parameterType = "string" resultType="categoryvo">
 			<![CDATA[
-			select no, name , description from category where blog_id = #{_parameter}
+			select no, name , description, blog_id from category where blog_id = #{_parameter}  order by no asc
 			]]>
 	</select>
 	
@@ -28,7 +28,7 @@
 
 	<insert id="defaultCategory" parameterType = "string">
 			<![CDATA[
-			insert into category values(null , 'default' , 'default category' ,#{_parameter}) 
+			insert into category values(null , '기본 카테고리' , 'default category' ,#{_parameter}) 
 			]]>	
 	</insert>
 	

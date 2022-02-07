@@ -1,6 +1,5 @@
 package com.poscoict.jblog.service;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,10 @@ public class BlogService {
 	@Autowired
 	private HttpSession session;
 	
+	public BlogVo getBlogs(String id) {
+		BlogVo blogVo = blogRepository.viewBlog(id);
+		return blogVo;
+	}
 	// 보기
 	public BlogVo getBlog(String id) {
 		BlogVo blogVo = blogRepository.viewBlog(id);
@@ -36,7 +39,7 @@ public class BlogService {
 		}
 		
 		if(blogRepository.updateBlog(blogVo)) {
-			session.setAttribute("blogVo", blogRepository.viewBlog(id));
+			session.setAttribute("blogVo", blogRepository.viewBlog(blogVo.getUser_id()));
 			return true;
 		}else {
 			return false;

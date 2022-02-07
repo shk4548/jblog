@@ -22,6 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
+		
 		UserVo authUser = userService.getUser(id,password);
 		if(authUser == null) {
 			request.setAttribute("result", "fail");
@@ -31,7 +32,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			return false;
 		}
-		
+		System.out.println("hhhhhhhhhhhhhhhhhhhhh");
 		//session 처리
 		HttpSession session = request.getSession(true);
 		session.setAttribute("authUser", authUser);

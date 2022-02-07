@@ -38,6 +38,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 		//6. @Auth가 적용이 되어 있기 때문에 인증(Authentication) 여부 확인
 		HttpSession session = request.getSession();
+		
 		if(session == null) {
 			response.sendRedirect(request.getContextPath() + "/user/login");
 			return false;
@@ -47,17 +48,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath() + "/user/login");
 			return false;
 		}
-		
-		// 7. 권한 체크를위해 @AUTH의 role 가져오기 ("USER", "ADMIN") 
-		String role = auth.role();
-		
-		// 8 @AUTH 의 role이 "USER인 경우 authUser 의 role은 상관이 없다
-		if("USER".equals(role)) {
-			return true;
-		}
-
-		// 10 . 옳은 관리자 @Auth role = "ADMIN"
-		// authUser 의 role : "ADMIN"
+	
 		return true;
 	}
 

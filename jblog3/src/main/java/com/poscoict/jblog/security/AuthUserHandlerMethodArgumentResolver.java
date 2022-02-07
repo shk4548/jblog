@@ -32,6 +32,12 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 			return null;
 		}
 		
+		UserVo vo = (UserVo)session.getAttribute("authUser");
+		
+		System.out.println("============================================================");
+		System.out.println(vo);
+		System.out.println("============================================================");
+		
 		return session.getAttribute("authUser");
 		
 	}

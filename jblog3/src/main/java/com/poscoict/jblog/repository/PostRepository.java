@@ -20,8 +20,8 @@ public class PostRepository {
 		return sqlSession.insert("post.insertPost", postVo) == 1;
 	}
 	
-	public List<PostVo> viewPost() {
-		return sqlSession.selectList("post.viewPost");
+	public List<PostVo> viewPost(Long category_no) {
+		return sqlSession.selectList("post.viewPost" , category_no);
 	}
 	
 	public CategoryVo findCategory(String name, String id) {
@@ -31,6 +31,10 @@ public class PostRepository {
 		map.put("id", id);
 		
 		return sqlSession.selectOne("category.findCategory", map);
+	}
+
+	public PostVo findPost(Long no) {
+		return sqlSession.selectOne("post.findPost", no);
 	}
 	
 	// 한개의 글 불러오기 아직 미완

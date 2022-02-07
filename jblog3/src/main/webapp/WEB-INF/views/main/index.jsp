@@ -25,17 +25,7 @@
 			</c:otherwise>
 		</c:choose>
 		</ul>
-		<form class="search-form">
-			<fieldset>
-				<input type="text" name="keyword" />
-				<input type="submit" value="검색" />
-			</fieldset>
-			<fieldset>
-				<input type="radio" name="which" value="blog-title"> <label>블로그 제목</label>
-				<input type="radio" name="which" value="tag"> <label>태그</label>
-				<input type="radio" name="which" value="blog-user"> <label>블로거</label>
-			</fieldset>
-		</form>
+
 	</div>
 </body>
 </html>
