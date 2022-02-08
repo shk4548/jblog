@@ -57,10 +57,12 @@
 						<td>${categoryList.description }</td>
 						
 						<td>
+						<c:if test="${count gt 1 }">
 						<c:if test ="${nolist.get(status.index)== 0 }">
 						<a href="${pageContext.request.contextPath}/${authUser.id}/delete/${categoryList.no}">
 						<img src="${pageContext.request.contextPath}/assets/images/delete.jpg">
 						</a>
+						</c:if>
 						</c:if>
 						</td>
 					</tr>  

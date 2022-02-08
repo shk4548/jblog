@@ -19,14 +19,10 @@ public class BlogService {
 	@Autowired
 	private HttpSession session;
 	
-	public BlogVo getBlogs(String id) {
-		BlogVo blogVo = blogRepository.viewBlog(id);
-		return blogVo;
-	}
+
 	// 보기
 	public BlogVo getBlog(String id) {
 		BlogVo blogVo = blogRepository.viewBlog(id);
-		session.setAttribute("blogVo", blogVo);
 		return blogVo;
 	}
 		

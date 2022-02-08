@@ -35,18 +35,14 @@ public class BlogController {
 	private PostService postService;
 //	@Autowired
 //	private UserService userService;
-	
-	@Autowired
-	private HttpSession session;
-	
+
 	// main
-	@RequestMapping(value={"", "/{categoryNo}", "/{categoryNo}/{postNo}"})
+	@RequestMapping(value={"", "/{categoryNo:^[0-9]+$}", "/{categoryNo:^[0-9]+$}/{postNo:^[0-9]+$}"})
 	public String blog(@AuthUser UserVo authUser, @PathVariable("id") String id, Model model, 
 			@PathVariable(required = false) Long categoryNo,
 			@PathVariable(required = false) Long postNo) {	
 		// 블로그
-		BlogVo blogVo = blogService.getBlog(id);
-		model.addAttribute("blogVo" , blogVo);
+		blogService.getBlog(id);
 		
 		// 카테고리 리스트
 		Long category_no = categoryNo;
@@ -56,6 +52,7 @@ public class BlogController {
 			category_no = categoryList.get(0).getNo();
 		}
 		model.addAttribute("categoryList", categoryList);
+		
 		
 		// 포스트 리스트
 		Long post_no = postNo;
@@ -76,7 +73,6 @@ public class BlogController {
 	@Auth
 	@RequestMapping("admin/basic")
 	public String blogBasic(@PathVariable("id") String id,@AuthUser UserVo authUser) {
-		System.out.println(authUser.getId() + " 세션 아이디  " + id + "받는아이디 씨발거진짜" );
 		if(authUser == null || !authUser.getId().equals(id)) {
 			return "redirect:/" + authUser.getId();
 		}
@@ -134,7 +130,13 @@ public class BlogController {
 		if(authUser == null || !authUser.getId().equals(id)) {
 			return "redirect:/" + authUser.getId();
 		}
+		
+		if(!(categoryService.getCategoryList(id).size()>1)) {
+			return "redirect:/" + authUser.getId();
+		}
+		
 		boolean result = categoryService.deleteCategory(category_no);
+		
 		return "redirect:/"+ authUser.getId();
 	}
 	
