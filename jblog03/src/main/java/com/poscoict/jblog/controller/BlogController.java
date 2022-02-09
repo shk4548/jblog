@@ -36,7 +36,7 @@ public class BlogController {
 //	@Autowired
 //	private UserService userService;
 
-	// main
+	// maind
 	@RequestMapping(value={"", "/{categoryNo:^[0-9]+$}", "/{categoryNo:^[0-9]+$}/{postNo:^[0-9]+$}"})
 	public String blog(@AuthUser UserVo authUser, @PathVariable("id") String id, Model model, 
 			@PathVariable(required = false) Long categoryNo,
