@@ -28,11 +28,14 @@ public class FileUploadConfig extends WebMvcConfigurerAdapter {
 			return multipartResolver;
 		}
 		
-		//mvc url-resource mapping file upload
+		//mvc url-resource mapping file upload, assets
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			registry.addResourceHandler(env.getProperty("fileupload.resourceMapping"))
 			.addResourceLocations("file:" + env.getProperty("fileupload.uploadLocation"));
+			
+			registry.addResourceHandler("/assets/**")
+			.addResourceLocations("classpath:/assets/");
 		}
 		
 		

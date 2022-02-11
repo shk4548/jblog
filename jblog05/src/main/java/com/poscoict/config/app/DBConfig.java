@@ -1,4 +1,4 @@
-package com.poscoict.jblog.app;
+package com.poscoict.config.app;
 
 import javax.sql.DataSource;
 

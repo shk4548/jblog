@@ -8,9 +8,9 @@
 			]]>
 	</select>
 	
-	<select id="findPost" parameterType = "long" resultType="postvo">
+	<select id="findPost" parameterType = "map" resultType="postvo">
 			<![CDATA[
-			select no, title , contents, date_format(reg_date, '%Y-%m-%d ') reg_date , category_no from post where no = #{no} 
+			select no, title , contents, date_format(reg_date, '%Y-%m-%d ') reg_date , category_no from post where no = #{no} and  category_no = #{category_no} 
 			]]>
 	</select>	
 	

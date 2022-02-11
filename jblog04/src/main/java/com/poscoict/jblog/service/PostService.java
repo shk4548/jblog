@@ -28,8 +28,8 @@ public class PostService {
 		return postRepository.viewPost(category_no);
 	}
 
-	public PostVo getPost(Long postNo) {
+	public PostVo getPost(Long postNo, Long category_no) {
 		
-		return postRepository.findPost(postNo);
+		return postRepository.findPost(postNo, category_no);
 	} 
 }

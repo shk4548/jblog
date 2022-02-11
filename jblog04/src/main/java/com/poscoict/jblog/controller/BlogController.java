@@ -64,7 +64,7 @@ public class BlogController {
 		model.addAttribute("postList", postList);
 		
 		// 포스트 보기
-		PostVo postVo = postService.getPost(post_no);
+		PostVo postVo = postService.getPost(post_no, category_no);
 		model.addAttribute("postVo", postVo);		
 		return "blog/blog-main";
 	}

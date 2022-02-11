@@ -33,8 +33,12 @@ public class PostRepository {
 		return sqlSession.selectOne("category.findCategory", map);
 	}
 
-	public PostVo findPost(Long no) {
-		return sqlSession.selectOne("post.findPost", no);
+	public PostVo findPost(Long no,Long category_no) {
+		Map<String, Long> map = new HashMap<>();
+		map.put("no", no);
+		map.put("category_no", category_no);
+		
+		return sqlSession.selectOne("post.findPost", map);
 	}
 	
 	// 한개의 글 불러오기 아직 미완

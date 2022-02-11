@@ -36,7 +36,7 @@ public class BlogController {
 //	@Autowired
 //	private UserService userService;
 
-	// maind
+	// main
 	@RequestMapping(value={"", "/{categoryNo:^[0-9]+$}", "/{categoryNo:^[0-9]+$}/{postNo:^[0-9]+$}"})
 	public String blog(@AuthUser UserVo authUser, @PathVariable("id") String id, Model model, 
 			@PathVariable(required = false) Long categoryNo,
@@ -64,7 +64,7 @@ public class BlogController {
 		model.addAttribute("postList", postList);
 		
 		// 포스트 보기
-		PostVo postVo = postService.getPost(post_no);
+		PostVo postVo = postService.getPost(post_no, category_no);
 		model.addAttribute("postVo", postVo);		
 		return "blog/blog-main";
 	}

@@ -1,6 +1,7 @@
 package com.poscoict.jblog.initializer;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -31,6 +32,9 @@ public class JblogWebApplicationInitalizer extends AbstractAnnotationConfigDispa
 	protected Filter[] getServletFilters() {
 		return new Filter[] { new CharacterEncodingFilter("utf-8", false) };
 	}
-	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
+	}
 
 }
