@@ -75,19 +75,17 @@ public class WebConfig  implements WebMvcConfigurer {
 		// Resource Mapping
 		
 		//mvc url-resource mapping file upload
-		@Override
-		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/images/**")
-			.addResourceLocations("file:/upload-images/");
-		
-		
-	}
-		
 //		@Override
 //		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//			registry.addResourceHandler(env.getProperty("fileupload.resourceMapping"))
-//			.addResourceLocations("file:" + env.getProperty("fileupload.uploadLocation"));
+//			registry.addResourceHandler("/images/**")
+//			.addResourceLocations("file:/upload-images/");
 //		
-//		
+		
 //	}
+		
+		@Override
+		public void addResourceHandlers(ResourceHandlerRegistry registry) {
+			registry.addResourceHandler(env.getProperty("fileupload.resourceMapping"))
+			.addResourceLocations("file:" + env.getProperty("fileupload.uploadLocation"));
+		}
 }
